@@ -6,7 +6,7 @@ const pageOneData = {
             {
                 selector: '[item-title]',
                 type: 'innerHTML',
-                value: 'First item'
+                value: 'An item'
             },
             {
                 selector: '[item-copy]',
@@ -19,18 +19,12 @@ const pageOneData = {
                 attribute: 'src',
                 value: 'https://source.unsplash.com/random/400x200?cats'
             },
-            {
-                selector: '[item-img-alt]',
-                type: 'attribute',
-                attribute: 'alt',
-                value: 'A random image'
-            },
         ],
         [
             {
                 selector: '[item-title]',
                 type: 'innerHTML',
-                value: 'Second item'
+                value: 'An item'
             },
             {
                 selector: '[item-copy]',
@@ -43,11 +37,77 @@ const pageOneData = {
                 attribute: 'src',
                 value: 'https://source.unsplash.com/random/400x200?fish'
             },
+        ],
+        [
             {
-                selector: '[item-img-alt]',
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
                 type: 'attribute',
-                attribute: 'alt',
-                value: 'A random image'
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?dogs'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?birds'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?pidgeon'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?puffin'
             },
         ],
     ]
@@ -73,12 +133,6 @@ const pageTwoData = {
                 attribute: 'src',
                 value: 'https://source.unsplash.com/random/400x200?birds'
             },
-            {
-                selector: '[item-img-alt]',
-                type: 'attribute',
-                attribute: 'alt',
-                value: 'A random image'
-            },
         ],
         [
             {
@@ -97,11 +151,77 @@ const pageTwoData = {
                 attribute: 'src',
                 value: 'https://source.unsplash.com/random/400x200?lizards'
             },
+        ],
+        [
             {
-                selector: '[item-img-alt]',
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
                 type: 'attribute',
-                attribute: 'alt',
-                value: 'A random image'
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?bats'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?fruit'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?platypus'
+            },
+        ],
+        [
+            {
+                selector: '[item-title]',
+                type: 'innerHTML',
+                value: 'An item'
+            },
+            {
+                selector: '[item-copy]',
+                type: 'innerHTML',
+                value: 'With some copy text'
+            },
+            {
+                selector: '[item-img-src]',
+                type: 'attribute',
+                attribute: 'src',
+                value: 'https://source.unsplash.com/random/400x200?pinto'
             },
         ],
     ]
@@ -126,9 +246,8 @@ async function getData(page = 1) {
 
 // Get dom data
 const parent = document.querySelector('[async-endpoint]')
-const endpoint = parent.getAttribute('[async-endpoint]')
-const loadMore = document.querySelector('[async-load-more]')
-const childSelector = parent.getAttribute('[child-template-selector]')
+const endpoint = parent.getAttribute('async-endpoint')
+const templateSelector = parent.getAttribute('template-selector')
 
 // DEFINE STATE MANAGEMENT
 function useState(args) {
@@ -166,10 +285,10 @@ const [ getPageCount, setPageCount ] = useState({
 })
 
 function cloneAndFill(item) {
-    const clone = parent.querySelector('[item-template]').cloneNode(true)
+    const clone = document.querySelector(templateSelector).cloneNode(true)
     const newNode = parent.appendChild(clone)
     newNode.removeAttribute('hidden')
-
+    newNode.setAttribute('template-clone', true)
     item.forEach(property => {
         const { selector, type, value, attribute } = property
         const target = newNode.querySelector(selector)
@@ -184,31 +303,76 @@ function cloneAndFill(item) {
     })
 }
 
-async function handleNext() {
-    setLoading(true)
-    const nextPage = getPage() + 1
 
+
+const prev = document.querySelector('[async-prev]')
+const next = document.querySelector('[async-next]')
+const loadMore = document.querySelector('[async-more]')
+function checkButtonDisability(page, pageCount) {
+    if (prev && next) {
+        prev.disabled = (page <= 1)
+        next.disabled = (page >= pageCount)
+    }
+    if (loadMore) {
+        loadMore.disabled = (page === pageCount)
+    }
+}
+
+async function handleRequest(nextPage, clearEntries = false) {
     try {
-        // Async part
-        const response = await getData(nextPage)
+        setLoading(true)
 
-        // Handle Response
+        // FETCH RESPONSE
+        const response = await getData(nextPage)
         const { pageCount, page, content } = response
+
+        // UPDATE STATE
+        checkButtonDisability(page, pageCount)
         setPage(page)
         setPageCount(pageCount)
-        setLoading(false)
+        
 
-        if (page === pageCount) {
-            loadMore.disabled = true
+        // UPDATE DOM
+        if (clearEntries) {
+            parent.innerHTML = ""
         }
         content.forEach(cloneAndFill)
+        setLoading(false)
     } catch (err) {
         console.error(err)
-    }
+        setLoading(false)
+    }  
 
     
 }
-handleNext()
-loadMore.addEventListener('click', handleNext)
+
+if (prev && next) {
+
+    function handlePrev() {
+        const prevPage = getPage() - 1
+        handleRequest(prevPage, true)
+    }
+
+    function handleNext() {
+        const nextPage = getPage() + 1
+        handleRequest(nextPage, true)
+    }
+
+    handleNext()
+    prev.addEventListener('click', handlePrev)
+    next.addEventListener('click', handleNext)
+
+} else if (loadMore) {
+
+    function handleMore() {
+        const nextPage = getPage() + 1
+        handleRequest(nextPage)
+    }
+
+    handleMore()
+    loadMore.addEventListener('click', handleMore)
+    
+}
+
 
 

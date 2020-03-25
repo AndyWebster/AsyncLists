@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <li item-template hidden="true">
+    <div class="filter-list">
+
+    </div>
+    <li article-template hidden="true">
         <img item-img-src src="">
         <h2 item-title></h2>
         <p item-copy></p>
     </li>
-    <ul async-endpoint="/api/articles" child-template="[item-template]"></ul>
+    <ul async-endpoint="/api/articles" template-selector="[article-template]" filter-selector="[article-filter]"></ul>
     <div class="loader">LOADING</div>
-    <!-- <button class="load-more" async-load-more>Load more</button> -->
-    <button class="load-more" async-prev>Previous</button>
-    <button class="load-more" async-next>Next</button>
+    <button class="load-more" async-more>Load more</button>
+    <!-- <button class="load-more" async-prev>Previous</button>
+    <button class="load-more" async-next>Next</button> -->
 
     <script src="script.js"></script>
 </body>
