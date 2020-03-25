@@ -1,4 +1,5 @@
 
+
 # AsyncLists
 A small developer friendly JS module for when you need to update the drop with dynamic data in a repetetive format.
 
@@ -25,33 +26,33 @@ And reference this selector on the wrapper:
 Data from the api might look something like this:
 ```json
 {
-  pageCount:  2,
-  page:  1,
-  content: [
+  "pageCount": 2,
+  "page": 1,
+  "content": [
     [
       {
-        selector:  '[animal-title]',
-        type:  'innerHtml',
-        value:  'Puppy'
+        "selector": "[animal-title]",
+        "type": "innerHtml",
+        "value": "Puppy"
       },
       {
-        selector:  '[img-src]',
-        type:  'attribute',
-        attribute:  'src',
-        value:  'https://source.unsplash.com/random/400x200?puppy'
+        "selector": "[img-src]",
+        "type": "attribute",
+        "attribute": "src",
+        "value": "https://source.unsplash.com/random/400x200?puppy"
       }
     ],
     [
       {
-        selector:  '[animal-title]',
-        type:  'innerHtml',
-        value:  'Kitty'
+        "selector": "[animal-title]",
+        "type": "innerHtml",
+        "value": "Kitty"
       },
       {
-        selector:  '[animal-src]',
-        type:  'attribute',
-        attribute:  'src',
-        value:  'https://source.unsplash.com/random/400x200?kitten'
+        "selector": "[animal-src]",
+        "type": "attribute",
+        "attribute": "src",
+        "value": "https://source.unsplash.com/random/400x200?kitten"
       }
     ]
   ]
