@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <li item-template hidden="true">
+        <img item-img-src src="">
+        <h2 item-title></h2>
+        <p item-copy></p>
+    </li>
+    <ul async-endpoint="/api/articles" child-template="[item-template]"></ul>
+    <div class="loader">LOADING</div>
+    <!-- <button class="load-more" async-load-more>Load more</button> -->
+    <button class="load-more" async-prev>Previous</button>
+    <button class="load-more" async-next>Next</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
