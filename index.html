@@ -8,36 +8,40 @@
 </head>
 <body>
     <div class="container">
+
         <h1 temp-api-target></h1>
+
         <div class="filter-list">
-            
             <label for="dog">
-                <input article-filter id="dog" type="checkbox" name="dogs">
+                <input article-filter id="dog" type="checkbox" name="dog">
                 <span>Dog</span>
             </label>
             
             <label for="cat">
-                <input article-filter id="cat" type="checkbox" name="cats">
+                <input article-filter id="cat" type="checkbox" name="cat">
                 <span>Cat</span>
             </label>
             
-            <label for="Bird">
-                <input article-filter id="Bird" type="checkbox" name="birds">
+            <label for="bird">
+                <input article-filter id="bird" type="checkbox" name="bird">
                 <span>Bird</span>
             </label>
         </div>
+        
+        <ul async-endpoint="/api/articles" template-selector="[article-template]" filter-selector="[article-filter]">
+            <li article-template hidden="true">
+                <img item-img-src src="">
+                <h2 item-title></h2>
+                <p item-copy></p>
+            </li>
+        </ul>
 
-        <li article-template hidden="true">
-            <img item-img-src src="">
-            <h2 item-title></h2>
-            <p item-copy></p>
-        </li>
-        <ul async-endpoint="/api/articles" template-selector="[article-template]" filter-selector="[article-filter]"></ul>
         <div class="loader">LOADING</div>
+
         <!-- <button class="load-more" async-more>Load more</button> -->
+
         <button class="load-more" async-prev>Previous</button>
         <button class="load-more" async-next>Next</button>
-
 
     </div>
 </body>
