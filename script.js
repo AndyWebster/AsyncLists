@@ -247,13 +247,10 @@ async function getData(page = 1) {
 // ---------------------------------------------
 
 // HELPERS
-function isFunction(functionToCheck) {
-    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
-}
-
-
-// DEFINE STATE HOOK
 function useState(args) {
+    function isFunction(functionToCheck) {
+        return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+    }
     const { getter, setter, initialValue } = args
 
     function setState(fn) {
@@ -266,34 +263,6 @@ function useState(args) {
         getter,
         setState
     ]
-}
-
-// DEFINE DEBOUNCE
-function initThrottle(t, callback) {
-    let isActive;
-    let timer;
-
-    function stop() {
-        timer && clearTimeout(timer);
-        isActive = false;
-        callback && isFunction(callback) && callback()
-    }
-
-    function start() {
-        if (isActive) {
-            return
-        }
-        isActive = true;
-        timer = setTimeout(stop, t*1000)
-    }
-  
-    return ({
-        get active() {
-            return isActive;
-        },
-        start,
-        stop
-    })
 }
 
 // GET PARENT AND ENDPOINT
@@ -371,7 +340,6 @@ function initFilters(makeRequest) {
     }
 }
 
-
 // INIT PAGE CONTROLS
 const prev = document.querySelector('[async-prev]')
 const next = document.querySelector('[async-next]')
@@ -379,14 +347,14 @@ const loadMore = document.querySelector('[async-more]')
 
 async function handleRequest(nextPage, clearEntries = false) {
 
-    function hydrateTemplate(item) {
+    function hydrateTemplate(dataFields) {
         const templateSelector = parent.getAttribute('template-selector')
         const clone = document.querySelector(templateSelector).cloneNode(true)
         const newNode = parent.appendChild(clone)
         newNode.removeAttribute('hidden')
         newNode.setAttribute('template-clone', true)
-        item.forEach(property => {
-            const { selector, type, value, attribute } = property
+        dataFields.forEach(field => {
+            const { selector, type, value, attribute } = field
             const target = newNode.querySelector(selector)
 
             // Handle different types of data
