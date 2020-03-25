@@ -7,20 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="filter-list">
+    <div class="container">
+        <h1 temp-api-target></h1>
+        <div class="filter-list">
+            
+            <label for="dog">
+                <input article-filter id="dog" type="checkbox" name="dogs">
+                <span>Dog</span>
+            </label>
+            
+            <label for="cat">
+                <input article-filter id="cat" type="checkbox" name="cats">
+                <span>Cat</span>
+            </label>
+            
+            <label for="Bird">
+                <input article-filter id="Bird" type="checkbox" name="birds">
+                <span>Bird</span>
+            </label>
+        </div>
+
+        <li article-template hidden="true">
+            <img item-img-src src="">
+            <h2 item-title></h2>
+            <p item-copy></p>
+        </li>
+        <ul async-endpoint="/api/articles" template-selector="[article-template]" filter-selector="[article-filter]"></ul>
+        <div class="loader">LOADING</div>
+        <!-- <button class="load-more" async-more>Load more</button> -->
+        <button class="load-more" async-prev>Previous</button>
+        <button class="load-more" async-next>Next</button>
+
 
     </div>
-    <li article-template hidden="true">
-        <img item-img-src src="">
-        <h2 item-title></h2>
-        <p item-copy></p>
-    </li>
-    <ul async-endpoint="/api/articles" template-selector="[article-template]" filter-selector="[article-filter]"></ul>
-    <div class="loader">LOADING</div>
-    <button class="load-more" async-more>Load more</button>
-    <!-- <button class="load-more" async-prev>Previous</button>
-    <button class="load-more" async-next>Next</button> -->
-
-    <script src="script.js"></script>
 </body>
+    <script src="script.js"></script>
 </html>
