@@ -20,7 +20,10 @@ Give it the hidden="true" attribute, and a unique selector:
 ```
 And reference this selector on the wrapper:
 ```html
-  <ul async-endpoint="/api/animals/" template-selector="[animal-template]" />
+  <ul 
+      async-endpoint="/api/animals/" 
+      template-selector="[animal-template]" 
+  />
 ```
 ### Add some data
 Data from the api might look something like this:
