@@ -19,7 +19,7 @@ This is the container element for your list items.
 ```
 
 ### Create the template
-Give the template a unique selector (an attribute or id) and the ```hidden="true"``` attribute and reference it on the wrapper.
+Give the template a selector e.g. ```animal-template``` and the ```hidden="true"``` attribute and reference it on the wrapper.
 ```html
 <ul 
   async-endpoint="/api/animals/" 
@@ -27,7 +27,7 @@ Give the template a unique selector (an attribute or id) and the ```hidden="true
 />
 <li animal-template hidden="true"/>
 ```
-Add some selectors (class, attribute or tag) to the template to define where the data will be injected.
+Add some non-unique selectors (i.e. class, attribute or tag) to the template to define where the data will be injected.
 ```html
 <ul 
   async-endpoint="/api/animals/" 
