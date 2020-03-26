@@ -73,17 +73,17 @@ The data format is somewhat strongly tied to the module logic. For the module to
 The content attribute holds an array items. And each item holds an array of properties.
 For each item, the module will copy the template, inject the provided fields and append it to the parent.
 
-### User controls
-Add a load more button:
+## Adding user controls
+### Load more button
 ```html
 <button async-more>Load more!</button>
 ```
-Or add Previous and Next controls:
+### Previous and Next buttons
 ```html
 <button async-prev>Previous</button>
 <button async-next>Next</button>
 ```
-### Filtering
+### Filter controls
 Add some checkboxes with a group selector ('[animal-filter]' in this case):
 ```html
 <input animal-filter type="checkbox"  name="dog">
@@ -102,11 +102,11 @@ When a checkbox is changed, the api will be called again with the new filters:
 /api/animals?page=1&tag=dog
 ```
 
-### Testing
+## Testing
 Spin up a mock api for testing using [json-server](https://github.com/typicode/json-server).
 In the example project we have defined some mock data, after cloning the project simply run the following command:
 ```
-json-server --watch example/db.json
+json-server --watch example/db.json --delay 500
 ```
  
 

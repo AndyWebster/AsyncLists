@@ -1,232 +1,180 @@
 {
-    "animals": [
+  "animals": [
+    {
+      "species": "cat",
+      "properties": [
         {
-            "pageCount":2,
-            "page":1,
-            "content":[
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?cats"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?fish"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?dogs"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?birds"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?pidgeon"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?puffin"
-                }
-              ]
-            ]
-          },
-          {
-            "pageCount":2,
-            "page":2,
-            "content":[
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"Third item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?birds"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"Last item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?lizards"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?bats"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?fruit"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?platypus"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?pinto"
-                }
-              ]
-            ]
-          }
-    ]
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Cat"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?cat"
+        }
+      ]
+    },
+    {
+      "species": "cat",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Kitten"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?kitten"
+        }
+      ]
+    },
+    {
+      "species": "cat",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Kitty"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?kitty"
+        }
+      ]
+    },
+    {
+      "species": "dog",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Dog"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?dog"
+        }
+      ]
+    },
+    {
+      "species": "dog",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Dogs"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?dogs"
+        }
+      ]
+    },
+    {
+      "species": "dog",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Puppy"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?puppy"
+        }
+      ]
+    },
+    {
+      "species": "dog",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Pupper"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?pupper"
+        }
+      ]
+    },
+    {
+      "species": "bird",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Bird"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?bird"
+        }
+      ]
+    },
+    {
+      "species": "bird",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Birds"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?birds"
+        }
+      ]
+    },
+    {
+      "species": "bird",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Birdies"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?birdies"
+        }
+      ]
+    },
+    {
+      "species": "bird",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Birb"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?birb"
+        }
+      ]
+    }
+  ]
 }

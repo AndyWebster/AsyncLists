@@ -13,35 +13,34 @@
 
         <div class="filter-list">
             <label for="dog">
-                <input article-filter id="dog" type="checkbox" name="dog">
+                <input article-filter="species" id="dog" type="checkbox" name="dog">
                 <span>Dog</span>
             </label>
             
             <label for="cat">
-                <input article-filter id="cat" type="checkbox" name="cat">
+                <input article-filter="species" id="cat" type="checkbox" name="cat">
                 <span>Cat</span>
             </label>
             
             <label for="bird">
-                <input article-filter id="bird" type="checkbox" name="bird">
+                <input article-filter="species" id="bird" type="checkbox" name="bird">
                 <span>Bird</span>
             </label>
         </div>
         
-        <ul async-endpoint="http://localhost:3000/animals" template-selector="[article-template]" filter-selector="[article-filter]">
+        <ul async-endpoint="http://localhost:3000/animals" template-selector="[article-template]" filter-selector="[article-filter]" async-page-limit="6">
             <li article-template hidden="true">
                 <img item-img-src src="">
                 <h2 item-title></h2>
-                <p item-copy></p>
             </li>
         </ul>
 
         <div class="loader">LOADING</div>
 
-        <!-- <button class="load-more" async-more>Load more</button> -->
+        <button class="load-more" async-more>Load more</button>
 
-        <button class="load-more" async-prev>Previous</button>
-        <button class="load-more" async-next>Next</button>
+        <!-- <button class="load-more" async-prev>Previous</button>
+        <button class="load-more" async-next>Next</button> -->
 
     </div>
 </body>

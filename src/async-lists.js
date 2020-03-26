@@ -33,15 +33,16 @@ const [ getPage, setPage ] = useState({
     setter: value =>  parent.setAttribute('async-page', value),
     initialValue: 0
 })
-const [ getPageCount, setPageCount ] = useState({
+const [ getPageLimit, setPageLimit ] = useState({
     getter: () => parseInt(parent.getAttribute('async-page-count'),10),
     setter: value =>  parent.setAttribute('async-page-count', value),
-    initialValue: 1
+    initialValue: (parent.getAttribute('async-page-limit') || '8')
 })
 
 // FILTERS
 function getFilterArray() {
     const filterSelector = parent.getAttribute('filter-selector')
+    console.log(filterSelector)
     const filterList = document.querySelectorAll(filterSelector)
    return [...filterList]
 }
@@ -49,10 +50,18 @@ function getActiveFilters() {
     function isChecked(checkbox) {
         return checkbox.checked
     }
-    function getName(element) {
-        return element.name
+    function getNameAndType(element) {
+        const filterSelector = parent.getAttribute('filter-selector')
+        function removeSquareBraces(string) {
+            const regex = /[\[\]]/gm
+            return string.replace(regex,'')
+        }
+        const attributeString = removeSquareBraces(filterSelector)
+        const filterType = element.getAttribute(attributeString)
+        console.log(attributeString)
+        return `&${filterType}=${element.name}`
     }
-    return  getFilterArray().filter(isChecked).map(getName)
+    return  getFilterArray().filter(isChecked).map(getNameAndType).join('')
 }
 function initFilters(makeRequest) {
     try {
@@ -82,7 +91,6 @@ function initFilters(makeRequest) {
 
         function handleChange() {
             setPage(1)
-            setPageCount(1)
             makeRequest(getPage(), true)
         }
         
@@ -106,14 +114,18 @@ const loadMore = document.querySelector('[async-more]')
 
 async function handleRequest(nextPage, clearEntries = false) {
 
-    function hydrateTemplate(dataFields) {
+    function hydrateTemplate(data) {
+
+        // PREPARE TEMPLATE CLONE 
         const templateSelector = parent.getAttribute('template-selector')
         const clone = document.querySelector(templateSelector).cloneNode(true)
         const newNode = parent.appendChild(clone)
         newNode.removeAttribute('hidden')
         newNode.setAttribute('template-clone', true)
-        dataFields.forEach(field => {
-            const { selector, type, value, attribute } = field
+
+        // FILL TEMPATE CLONE
+        data.properties.forEach(propery => {
+            const { selector, type, value, attribute } = propery
             const target = newNode.querySelector(selector)
 
             // Handle different types of data
@@ -126,7 +138,7 @@ async function handleRequest(nextPage, clearEntries = false) {
         })
     }
 
-    function updateButtonDisability(page, pageCount) {
+    function updateButtonDisability(page, pageCount = 999) {
         if (prev && next) {
             prev.disabled = (page <= 1)
             next.disabled = (page >= pageCount)
@@ -148,24 +160,40 @@ async function handleRequest(nextPage, clearEntries = false) {
         setLoading(true)
 
         // FETCH DATA
-        const url = `${endpoint}?page=${nextPage}${["",...getActiveFilters()].join('&tag=')}`
+        const url = `${endpoint}?_page=${nextPage}&_limit=${getPageLimit()}${getActiveFilters()}`
         const tempApiTarget = document.querySelector('[temp-api-target]')
         tempApiTarget.innerText = url
-
         const response = await fetch(url)
-        const json = await response.json()
+        const data = await response.json()
 
-        // UNPACK FIRST ITEM IF ARRAY, OR OBJECT
-        const { pageCount, page, content } = Array.isArray(json) ? json[0] : json
+        if (data.length >= getPageLimit()) {
 
-        // UPDATE STATE
-        updateButtonDisability(page, pageCount)
-        setPage(page)
-        setPageCount(page)
-        // UPDATE DOM
-        clearEntries && deleteClones()
-        content.forEach(hydrateTemplate)
+            // UPDATE STATE
+            setPage(nextPage)
+            updateButtonDisability(getPage())
+
+            // UPDATE DOM
+            clearEntries && deleteClones()
+            data.forEach(hydrateTemplate)
+
+        } else if (data.length) {
+
+            // UPDATE STATE
+            setPage(nextPage)
+            updateButtonDisability(getPage(), getPage())
+
+            // UPDATE DOM
+            clearEntries && deleteClones()
+            data.forEach(hydrateTemplate)
+
+        } else {
+            updateButtonDisability(getPage(), getPage())
+        }
+        
+
+        
         setLoading(false)
+
     } catch (err) {
         console.error(err)
         setLoading(false)
