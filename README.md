@@ -19,12 +19,7 @@ This is the container element for your list items.
 ```
 
 ### Create the template
-Give the template a unique selector (an attribute or id) and the ```hidden="true"``` attribute. 
-```html
-<ul async-endpoint="/api/animals/" />
-<li animal-template hidden="true"/>
-```
-Reference the ```template-selector``` on the wrapper.
+Give the template a unique selector (an attribute or id) and the ```hidden="true"``` attribute and reference it on the wrapper.
 ```html
 <ul 
   async-endpoint="/api/animals/" 
@@ -32,9 +27,19 @@ Reference the ```template-selector``` on the wrapper.
 />
 <li animal-template hidden="true"/>
 ```
+Add some selectors (class, attribute or tag) to the template to define where the data will be injected.
+```html
+<ul 
+  async-endpoint="/api/animals/" 
+  template-selector="[animal-template]" 
+/>
+<li animal-template hidden="true">
+  <img animal-src />
+  <h2 animal-title />
+</li>
+```
 ### Add some data
 Data returned by your endpoint might look something like this:
-
 ```json
 {
   "animals": [
@@ -76,13 +81,11 @@ Data returned by your endpoint might look something like this:
 
 In this example, the template will be cloned for each item in the ```"animals"``` array.
 
-The ```"selector"``` of each field in the ```"properties"``` array will define where in the template to inject the ```"value"```.
-
-The selector could be an attribute, class or an HTML tag e.g. ```h2```
+The ```"selector"``` of each field in the ```"properties"``` array defines where in the template to inject the ```"value"```.
 
 **Note** The value will only be injected into the first matching element for the selector.
 
-The value can be of type ```"innerHTML"``` or ```"attribute"```.
+The value should be of type ```"innerHTML"``` or ```"attribute"```.
 
 The result could look something like this:
 ```html
