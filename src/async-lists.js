@@ -154,7 +154,9 @@ async function handleRequest(nextPage, clearEntries = false) {
 
         const response = await fetch(url)
         const json = await response.json()
-        const { pageCount, page, content } = json
+
+        // UNPACK FIRST ITEM IF ARRAY, OR OBJECT
+        const { pageCount, page, content } = Array.isArray(json) ? json[0] : json
 
         // UPDATE STATE
         updateButtonDisability(page, pageCount)

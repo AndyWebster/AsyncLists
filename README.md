@@ -102,7 +102,12 @@ When a checkbox is changed, the api will be called again with the new filters:
 /api/animals?page=1&tag=dog
 ```
 
-
+### Testing
+Spin up a mock api for testing using [json-server](https://github.com/typicode/json-server).
+In the example project we have defined some mock data, after cloning the project simply run the following command:
+```
+json-server --watch example/db.json
+```
  
 
 ## Authors

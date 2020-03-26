@@ -116,67 +116,13 @@
           },
           {
             "pageCount":2,
-            "page":1,
+            "page":2,
             "content":[
               [
                 {
                   "selector":"[item-title]",
                   "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?cats"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?fish"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
-                },
-                {
-                  "selector":"[item-copy]",
-                  "type":"innerHTML",
-                  "value":"With some copy text"
-                },
-                {
-                  "selector":"[item-img-src]",
-                  "type":"attribute",
-                  "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?dogs"
-                }
-              ],
-              [
-                {
-                  "selector":"[item-title]",
-                  "type":"innerHTML",
-                  "value":"An item"
+                  "value":"Third item"
                 },
                 {
                   "selector":"[item-copy]",
@@ -194,7 +140,7 @@
                 {
                   "selector":"[item-title]",
                   "type":"innerHTML",
-                  "value":"An item"
+                  "value":"Last item"
                 },
                 {
                   "selector":"[item-copy]",
@@ -205,7 +151,7 @@
                   "selector":"[item-img-src]",
                   "type":"attribute",
                   "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?pidgeon"
+                  "value":"https://source.unsplash.com/random/400x200?lizards"
                 }
               ],
               [
@@ -223,7 +169,61 @@
                   "selector":"[item-img-src]",
                   "type":"attribute",
                   "attribute":"src",
-                  "value":"https://source.unsplash.com/random/400x200?puffin"
+                  "value":"https://source.unsplash.com/random/400x200?bats"
+                }
+              ],
+              [
+                {
+                  "selector":"[item-title]",
+                  "type":"innerHTML",
+                  "value":"An item"
+                },
+                {
+                  "selector":"[item-copy]",
+                  "type":"innerHTML",
+                  "value":"With some copy text"
+                },
+                {
+                  "selector":"[item-img-src]",
+                  "type":"attribute",
+                  "attribute":"src",
+                  "value":"https://source.unsplash.com/random/400x200?fruit"
+                }
+              ],
+              [
+                {
+                  "selector":"[item-title]",
+                  "type":"innerHTML",
+                  "value":"An item"
+                },
+                {
+                  "selector":"[item-copy]",
+                  "type":"innerHTML",
+                  "value":"With some copy text"
+                },
+                {
+                  "selector":"[item-img-src]",
+                  "type":"attribute",
+                  "attribute":"src",
+                  "value":"https://source.unsplash.com/random/400x200?platypus"
+                }
+              ],
+              [
+                {
+                  "selector":"[item-title]",
+                  "type":"innerHTML",
+                  "value":"An item"
+                },
+                {
+                  "selector":"[item-copy]",
+                  "type":"innerHTML",
+                  "value":"With some copy text"
+                },
+                {
+                  "selector":"[item-img-src]",
+                  "type":"attribute",
+                  "attribute":"src",
+                  "value":"https://source.unsplash.com/random/400x200?pinto"
                 }
               ]
             ]
