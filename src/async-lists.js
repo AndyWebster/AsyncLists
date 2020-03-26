@@ -36,7 +36,7 @@ const [ getPage, setPage ] = useState({
 const [ getPageLimit, setPageLimit ] = useState({
     getter: () => parseInt(parent.getAttribute('async-page-count'),10),
     setter: value =>  parent.setAttribute('async-page-count', value),
-    initialValue: (parent.getAttribute('async-page-limit') || '8')
+    initialValue: (parent.getAttribute('async-page-limit') || '10')
 })
 
 // FILTERS

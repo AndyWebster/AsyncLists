@@ -1,77 +1,102 @@
 
 
 # AsyncLists
-A small developer friendly JS module for when you need to update the drop with dynamic data in a repetetive format.
+AsyncLists is a JS library created to handle populating the DOM with dynamic list data from an endpoint.
+The library can be operated entirely by adding attributes to your HTML elements. No additional javascriptis  required.
+
+## Requirements
+* Some kind of endpoint ready to draw data from.
+* An HTML document with elements ready to populate with data.
 
 ## Getting Started
-See the index.html for example html layout and the JS file for an example data setup.
+See the example folder to get an idea of how the library attributes are applied to your HTML.
 
 ### Define your endpoint
-Add the async-endpoint attribute to your list wrapper element. 
+Add the ```async-endpoint``` attribute to your wrapper element. 
 This is the container element for your list items.
 ```html
-  <ul async-endpoint="/api/animals/" />
+<ul async-endpoint="/api/animals/" />
 ```
 
 ### Create the template
-Give it the hidden="true" attribute, and a unique selector:
+Give the template a unique selector (an attribute or id) and the ```hidden="true"``` attribute. 
 ```html
-  <li animal-template hidden="true"/>
+<ul async-endpoint="/api/animals/" />
+<li animal-template hidden="true"/>
 ```
-And reference this selector on the wrapper:
+Reference the ```template-selector``` on the wrapper.
 ```html
-  <ul 
-      async-endpoint="/api/animals/" 
-      template-selector="[animal-template]" 
-  />
+<ul 
+  async-endpoint="/api/animals/" 
+  template-selector="[animal-template]" 
+/>
+<li animal-template hidden="true"/>
 ```
 ### Add some data
-Data from the api might look something like this:
+Data returned by your endpoint might look something like this:
+
 ```json
 {
-  "pageCount": 2,
-  "page": 1,
-  "content": [
-    [
-      {
-        "selector": "[animal-title]",
-        "type": "innerHtml",
-        "value": "Puppy"
-      },
-      {
-        "selector": "[img-src]",
-        "type": "attribute",
-        "attribute": "src",
-        "value": "https://source.unsplash.com/random/400x200?puppy"
-      }
-    ],
-    [
-      {
-        "selector": "[animal-title]",
-        "type": "innerHtml",
-        "value": "Kitty"
-      },
-      {
-        "selector": "[animal-src]",
-        "type": "attribute",
-        "attribute": "src",
-        "value": "https://source.unsplash.com/random/400x200?kitten"
-      }
-    ]
+  "animals": [
+    {
+      "species": "cat",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Cat"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?cat"
+        }
+      ]
+    },
+    {
+      "species": "dog",
+      "properties": [
+        {
+          "selector":"[item-title]",
+          "type":"innerHTML",
+          "value":"Dog"
+        },
+        {
+          "selector":"[item-img-src]",
+          "type":"attribute",
+          "attribute":"src",
+          "value":"https://source.unsplash.com/random/400x200?dog"
+        }
+      ]
+    }
   ]
 }
 ```
-And the corresponding template might look like this:
+
+In this example, the template will be cloned for each item in the ```"animals"``` array.
+
+The ```"selector"``` of each field in the ```"properties"``` array will define where in the template to inject the ```"value"```.
+
+The selector could be an attribute, class or an HTML tag e.g. ```h2```
+
+**Note** The value will only be injected into the first matching element for the selector.
+
+The value can be of type ```"innerHTML"``` or ```"attribute"```.
+
+The result could look something like this:
 ```html
-<li animal-template hidden="true">
-    <img animal-src/>
-    <h2 animal-title/>
-</li>
+<ul async-endpoint="/api/animals/" template-selector="[animal-template]">
+  <li animal-template>
+    <img animal-src src="https://source.unsplash.com/random/400x200?cat"/>
+    <h2 animal-title>Cat</h2>
+  </li>
+  <li animal-template>
+    <img animal-src src="https://source.unsplash.com/random/400x200?cat"/>
+    <h2 animal-title>Cat</h2>
+  </li>
+</ul>
 ```
-**Note**
-The data format is somewhat strongly tied to the module logic. For the module to function correctly, the response data must be laid out as above. 
-The content attribute holds an array items. And each item holds an array of properties.
-For each item, the module will copy the template, inject the provided fields and append it to the parent.
 
 ## Adding user controls
 ### Load more button
@@ -83,28 +108,40 @@ For each item, the module will copy the template, inject the provided fields and
 <button async-prev>Previous</button>
 <button async-next>Next</button>
 ```
-### Filter controls
-Add some checkboxes with a group selector ('[animal-filter]' in this case):
-```html
-<input animal-filter type="checkbox"  name="dog">
-<input animal-filter type="checkbox"  name="cat">
-```
-And reference them on the parent:
+
+### Paging
+Control the number of items per page with the optional ```async-page-limit``` attribute.
+This will default to 10 items.
+
+The limit and page requested will be appended the endpoint url with the e.g. ```/api/animals?_page=1&_limit=6```
+
 ```html
 <ul 
-   async-endpoint="/api/animals/" 
-   template-selector="#my-fancy-template" 
-   filter-selector="[animal-filter]"
+  async-endpoint="/api/animals/" 
+  template-selector="[animal-template]" 
+  async-page-limit="6"
 />
 ```
-When a checkbox is changed, the api will be called again with the new filters:
-```
-/api/animals?page=1&tag=dog
+
+### Filter controls
+Add some checkboxes with a group selector and filter name and reference it on the wrapper element.
+
+```html
+<ul 
+  async-endpoint="/api/animals/" 
+  template-selector="[animal-template]" 
+  filter-selector="[animal-filter]"
+/>
+<input animal-filter="species" type="checkbox"  name="dog">
+<input animal-filter="species" type="checkbox"  name="cat">
 ```
 
+The filters will be appended the endpoint url with the e.g. ```/api/animals?_page=1&_limit=6&species=dog```
+
 ## Testing
-Spin up a mock api for testing using [json-server](https://github.com/typicode/json-server).
-In the example project we have defined some mock data, after cloning the project simply run the following command:
+Spin up a mock API using the [json-server](https://github.com/typicode/json-server) library.
+
+In the example project we have defined some mock data in ```db.json```. Clone the project, install the the libray and run the following command:
 ```
 json-server --watch example/db.json --delay 500
 ```

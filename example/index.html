@@ -13,24 +13,24 @@
 
         <div class="filter-list">
             <label for="dog">
-                <input article-filter="species" id="dog" type="checkbox" name="dog">
+                <input animal-filter="species" id="dog" type="checkbox" name="dog">
                 <span>Dog</span>
             </label>
             
             <label for="cat">
-                <input article-filter="species" id="cat" type="checkbox" name="cat">
+                <input animal-filter="species" id="cat" type="checkbox" name="cat">
                 <span>Cat</span>
             </label>
             
             <label for="bird">
-                <input article-filter="species" id="bird" type="checkbox" name="bird">
+                <input animal-filter="species" id="bird" type="checkbox" name="bird">
                 <span>Bird</span>
             </label>
         </div>
         
-        <ul async-endpoint="http://localhost:3000/animals" template-selector="[article-template]" filter-selector="[article-filter]" async-page-limit="6">
-            <li article-template hidden="true">
-                <img item-img-src src="">
+        <ul async-endpoint="http://localhost:3000/animals" template-selector="[animal-template]" filter-selector="[animal-filter]" async-page-limit="6">
+            <li animal-template hidden="true">
+                <img item-img-src>
                 <h2 item-title></h2>
             </li>
         </ul>
@@ -43,7 +43,8 @@
         <button class="load-more" async-next>Next</button> -->
 
     </div>
-</body>
-  
+
     <script src="../src/async-lists.js"></script>
+</body>
+    
 </html>
