@@ -10,7 +10,7 @@ See the index.html for example html layout and the JS file for an example data s
 Add the async-endpoint attribute to your list wrapper element. 
 This is the container element for your list items.
 ```html
-  <ul async-endpoint="/cute-kittens" />
+  <ul async-endpoint="/api/animals/" />
 ```
 
 ### Create the template
@@ -20,7 +20,7 @@ Give it the hidden="true" attribute, and a unique selector:
 ```
 And reference this selector on the wrapper:
 ```html
-  <ul async-endpoint="/" template-selector="[animal-template]" />
+  <ul async-endpoint="/api/animals/" template-selector="[animal-template]" />
 ```
 ### Add some data
 Data from the api might look something like this:
