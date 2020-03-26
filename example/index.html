@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <h1 temp-api-target></h1>
+
+        <div class="filter-list">
+            <label for="dog">
+                <input article-filter id="dog" type="checkbox" name="dog">
+                <span>Dog</span>
+            </label>
+            
+            <label for="cat">
+                <input article-filter id="cat" type="checkbox" name="cat">
+                <span>Cat</span>
+            </label>
+            
+            <label for="bird">
+                <input article-filter id="bird" type="checkbox" name="bird">
+                <span>Bird</span>
+            </label>
+        </div>
+        
+        <ul async-endpoint="http://www.mocky.io/v2/5e7c871435000068000690a1" template-selector="[article-template]" filter-selector="[article-filter]">
+            <li article-template hidden="true">
+                <img item-img-src src="">
+                <h2 item-title></h2>
+                <p item-copy></p>
+            </li>
+        </ul>
+
+        <div class="loader">LOADING</div>
+
+        <!-- <button class="load-more" async-more>Load more</button> -->
+
+        <button class="load-more" async-prev>Previous</button>
+        <button class="load-more" async-next>Next</button>
+
+    </div>
+</body>
+   <script> 
+        // MOCK API FOR TESTING
+        // ---------------------------------------------
+        const pageOneData = {
+            pageCount: 2,
+            page: 1,
+            content: [
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?cats'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?fish'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?dogs'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?birds'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?pidgeon'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?puffin'
+                    },
+                ],
+            ]
+        }
+        const pageTwoData = {
+            pageCount: 2,
+            page: 2,
+            content: [
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'Third item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?birds'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'Last item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?lizards'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?bats'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?fruit'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?platypus'
+                    },
+                ],
+                [
+                    {
+                        selector: '[item-title]',
+                        type: 'innerHTML',
+                        value: 'An item'
+                    },
+                    {
+                        selector: '[item-copy]',
+                        type: 'innerHTML',
+                        value: 'With some copy text'
+                    },
+                    {
+                        selector: '[item-img-src]',
+                        type: 'attribute',
+                        attribute: 'src',
+                        value: 'https://source.unsplash.com/random/400x200?pinto'
+                    },
+                ],
+            ]
+        }
+        async function getData(page = 1) {
+            function sendResponse() {
+                if (page === 1) {
+                    return pageOneData
+                }
+                if (page === 2) {
+                    return pageTwoData
+                }
+            }
+            return new Promise(resolve => {
+                setTimeout(() => {
+                resolve(sendResponse());
+                }, 1000);
+            });
+
+        }
+        </script>
+    <script src="/src/async-lists.js"></script>
+</html>
