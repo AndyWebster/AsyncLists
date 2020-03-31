@@ -166,7 +166,7 @@ async function handleRequest(nextPage, clearEntries = false) {
         const response = await fetch(url)
         const data = await response.json()
 
-        if (data.length >= getPageLimit()) {
+        if (data && data.length >= getPageLimit()) {
 
             // UPDATE STATE
             setPage(nextPage)
@@ -176,7 +176,7 @@ async function handleRequest(nextPage, clearEntries = false) {
             clearEntries && deleteClones()
             data.forEach(hydrateTemplate)
 
-        } else if (data.length) {
+        } else if (data && data.length) {
 
             // UPDATE STATE
             setPage(nextPage)
@@ -222,6 +222,17 @@ if (prev && next) {
     // EVENT LISTENERS
     prev.addEventListener('click', handlePrev)
     next.addEventListener('click', handleNext)
+
+    const pageButtons = document.querySelectorAll('[async-page]')
+    if (pageButtons && pageButtons.length) {
+
+        function initPageButton(button) {
+            const nextPage = parseInt( button.getAttribute('async-page'), 10)
+            button.addEventListener('click', () => handleRequest(nextPage, true))
+        }
+
+        pageButtons.forEach(initPageButton)
+    }
 
 } else if (loadMore) {
     function handleMore() {
