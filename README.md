@@ -34,8 +34,8 @@ Add some non-unique selectors (i.e. class, attribute or tag) to the template to 
   template-selector="[animal-template]" 
 />
 <li animal-template hidden="true">
-  <img animal-src />
-  <h2 animal-title />
+  <img item-img-src />
+  <h2 item-title />
 </li>
 ```
 ### Add some data
@@ -91,12 +91,12 @@ The result could look something like this:
 ```html
 <ul async-endpoint="/api/animals/" template-selector="[animal-template]">
   <li animal-template>
-    <img animal-src src="https://source.unsplash.com/random/400x200?cat"/>
-    <h2 animal-title>Cat</h2>
+    <img item-img-src src="https://source.unsplash.com/random/400x200?cat"/>
+    <h2 item-title>Cat</h2>
   </li>
   <li animal-template>
-    <img animal-src src="https://source.unsplash.com/random/400x200?cat"/>
-    <h2 animal-title>Cat</h2>
+    <img item-img-src src="https://source.unsplash.com/random/400x200?cat"/>
+    <h2 item-title>Cat</h2>
   </li>
 </ul>
 ```
