@@ -2,7 +2,7 @@
 
 # AsyncLists
 AsyncLists is a JS library created to handle populating the DOM with dynamic list data from an endpoint.
-The library can be operated entirely by adding attributes to your HTML elements. No additional javascriptis  required.
+The library can be operated entirely by adding attributes to your HTML elements. No additional javascript is required.
 
 ## Requirements
 * Some kind of endpoint ready to draw data from.
